@@ -1,7 +1,7 @@
 {
   "name": "plugin-profile-manager",
   "version": "1.0.0",
-  "description": "Obsidian plugin for editing community plugin enablement across multiple config profiles.",
+  "description": "Desktop plugin for editing community plugin enablement across multiple config profiles.",
   "main": "main.js",
   "scripts": {
     "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",

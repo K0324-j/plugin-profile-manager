@@ -67,7 +67,7 @@ export default class PluginProfileManagerPlugin extends Plugin {
   async onload() {
     await this.loadSettings();
 
-    this.addRibbonIcon("sliders-horizontal", "Open plugin profile manager", () => {
+    this.addRibbonIcon("sliders-horizontal", "Open profile manager", () => {
       new PluginProfileManagerModal(this.app, this).open();
     });
 
@@ -137,7 +137,7 @@ class PluginProfileManagerModal extends Modal {
     const shell = this.contentEl.createDiv({ cls: "ppm-shell" });
     const header = shell.createDiv({ cls: "ppm-header" });
     const heading = header.createDiv();
-    heading.createEl("h2", { text: "Plugin profile manager" });
+    heading.createEl("h2", { text: "Profile manager" });
     heading.createEl("p", { text: "Manage plugin states across device profiles" });
 
     const actionBar = shell.createDiv({ cls: "ppm-action-bar" });
@@ -165,7 +165,7 @@ class PluginProfileManagerModal extends Modal {
       this.setStatus("Loaded profiles.");
     } catch (error) {
       this.setStatus(error instanceof Error ? error.message : String(error));
-      new Notice("Plugin profile manager: failed to load profiles.");
+      new Notice("Profile manager: failed to load profiles.");
     }
   }
 
@@ -299,7 +299,7 @@ class PluginProfileManagerModal extends Modal {
     const footnote = container.createDiv({ cls: "ppm-footnote" });
     setIcon(footnote.createSpan(), "info");
     footnote.createSpan({
-      text: "Changes to the current Obsidian profile apply immediately after save."
+      text: "Changes to the current profile apply immediately after save."
     });
   }
 
@@ -496,7 +496,7 @@ class PluginProfileManagerModal extends Modal {
     }
 
     if (!this.scanResult) {
-      new Notice("Plugin profile manager: no scan result to save.");
+      new Notice("Profile manager: no scan result to save.");
       return;
     }
 
@@ -521,7 +521,7 @@ class PluginProfileManagerModal extends Modal {
       this.setStatus(saveStatus);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      new Notice(`Plugin profile manager: ${message}`);
+      new Notice(`Profile manager: ${message}`);
       this.setStatus(message);
     }
   }
@@ -577,7 +577,7 @@ class PluginProfileManagerModal extends Modal {
     const setting = (this.app as AppWithSetting).setting;
 
     if (!setting) {
-      new Notice("Open Obsidian settings to edit plugin profile manager profiles.");
+      new Notice("Open settings to edit profile manager profiles.");
       return;
     }
 
@@ -688,7 +688,7 @@ class PluginProfileManagerSettingTab extends PluginSettingTab {
 
     new Setting(containerEl)
       .setName("Add profile")
-      .setDesc("Register another Obsidian config folder.")
+      .setDesc("Register another config folder.")
       .addButton((button) => {
         button
           .setButtonText("Add")
@@ -944,7 +944,7 @@ async function applyCurrentRuntimeProfileChanges(
   };
 
   if (!currentConfigDir) {
-    result.skippedReason = "Current Obsidian config folder was not detected.";
+    result.skippedReason = "Current config folder was not detected.";
     return result;
   }
 
@@ -991,7 +991,7 @@ async function applyCurrentRuntimeProfileChanges(
       await runtimeApp.plugins.disablePlugin(pluginId, true);
       result.disabled.push(pluginId);
     } catch (error) {
-      console.error(`Plugin Profile Manager: failed to disable ${pluginId}`, error);
+      console.error(`Profile Manager: failed to disable ${pluginId}`, error);
       result.failed.push(pluginId);
     }
   }
@@ -1008,7 +1008,7 @@ async function applyCurrentRuntimeProfileChanges(
       }
     } catch (error) {
       runtimeApp.plugins.enabledPlugins.delete(pluginId);
-      console.error(`Plugin Profile Manager: failed to enable ${pluginId}`, error);
+      console.error(`Profile Manager: failed to enable ${pluginId}`, error);
       result.failed.push(pluginId);
     }
   }
@@ -1019,19 +1019,19 @@ async function applyCurrentRuntimeProfileChanges(
 
 function getSaveNotice(result: RuntimeApplyResult): string {
   if (result.failed.length > 0) {
-    return `Plugin profile settings saved. Runtime apply failed for ${result.failed.length} plugin(s).`;
+    return `Profile settings saved. Runtime apply failed for ${result.failed.length} plugin(s).`;
   }
 
   if (!result.applied) {
-    return "Plugin profile settings saved. Changes for other profiles apply when that Obsidian profile opens.";
+    return "Profile settings saved. Changes for other profiles apply when that profile opens.";
   }
 
   const changedCount = result.enabled.length + result.disabled.length;
   if (changedCount === 0) {
-    return "Plugin profile settings saved.";
+    return "Profile settings saved.";
   }
 
-  return `Plugin profile settings saved. Applied ${changedCount} current-profile change(s).`;
+  return `Profile settings saved. Applied ${changedCount} current-profile change(s).`;
 }
 
 function getSaveStatus(result: RuntimeApplyResult): string {

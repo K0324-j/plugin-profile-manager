@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for considering a contribution to Plugin Profile Manager.
+Thanks for considering a contribution to Profile Manager.
 
 ## Development setup
 

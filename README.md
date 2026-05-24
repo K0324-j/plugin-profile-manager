@@ -1,25 +1,25 @@
-# Plugin Profile Manager
+# Profile Manager
 
-Plugin Profile Manager is an Obsidian desktop plugin for comparing and editing enabled community plugins across multiple configuration profiles.
+Profile Manager is a desktop plugin for comparing and editing enabled community plugins across multiple configuration profiles.
 
-It is designed for vaults that use separate Obsidian configuration folders for different devices or workflows.
+It is designed for vaults that use separate configuration folders for different devices or workflows.
 
-![Plugin Profile Manager in privacy mode](docs/images/plugin-profile-manager-privacy-mode.png)
+![Profile Manager in privacy mode](docs/images/plugin-profile-manager-privacy-mode.png)
 
 ## Features
 
-- Register multiple Obsidian configuration folders.
+- Register multiple configuration folders.
 - Compare community plugin state across profiles.
 - Show each plugin as on, off, not installed, or blocked by invalid JSON.
 - Toggle enabled plugins by editing each profile's `community-plugins.json`.
 - Copy a missing plugin folder from another registered profile.
 - Uninstall a plugin from one profile after creating a backup.
-- Keep Plugin Profile Manager protected from accidental removal.
+- Keep Profile Manager protected from accidental removal.
 - Use privacy mode for screenshots, demos, and issue reports.
 
 ## What this plugin changes
 
-Plugin Profile Manager reads plugin manifests from registered profile folders and writes to each profile's `community-plugins.json` when you save changes.
+Profile Manager reads plugin manifests from registered profile folders and writes to each profile's `community-plugins.json` when you save changes.
 
 It can also copy or remove plugin folders inside registered profile folders when you explicitly use install or uninstall actions.
 
@@ -56,14 +56,14 @@ Privacy mode is not a security boundary. It is a screenshot and demo helper.
 ## Usage
 
 1. Open the command palette.
-2. Run `Plugin Profile Manager: Open manager`.
+2. Run `Profile Manager: Open manager`.
 3. Open settings and register the configuration folders you want to manage.
 4. Review each plugin row and profile column.
 5. Use `Backup and save` to write changes.
 
 ## Desktop only
 
-Plugin Profile Manager is marked as desktop-only because it manages local Obsidian configuration folders and plugin directories from a desktop vault.
+Profile Manager is marked as desktop-only because it manages local configuration folders and plugin directories from a desktop vault.
 
 Mobile Obsidian is not supported.
 
