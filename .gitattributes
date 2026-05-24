@@ -1,0 +1,14 @@
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+.gitignore text eol=lf
+.npmrc text eol=lf
+LICENSE text eol=lf
+*.sh text eol=lf
+*.ts text eol=lf
+*.mjs text eol=lf
+*.mts text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.png binary

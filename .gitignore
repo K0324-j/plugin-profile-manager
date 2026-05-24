@@ -1,0 +1,17 @@
+node_modules/
+main.js
+*.map
+data.json
+.env
+.env.*
+*.log
+dist/
+build/
+coverage/
+.cache/
+tmp/
+temp/
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

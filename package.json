@@ -1,0 +1,32 @@
+{
+  "name": "plugin-profile-manager",
+  "version": "1.0.0",
+  "description": "Obsidian plugin for editing community plugin enablement across multiple config profiles.",
+  "main": "main.js",
+  "scripts": {
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "dev": "node esbuild.config.mjs",
+    "lint": "eslint .",
+    "version": "node version-bump.mjs && git add manifest.json versions.json"
+  },
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin",
+    "plugin-manager"
+  ],
+  "author": "K0324-j",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "9.30.1",
+    "@types/node": "^20.17.12",
+    "esbuild": "^0.28.0",
+    "eslint": "^9.30.1",
+    "eslint-plugin-obsidianmd": "0.1.8",
+    "globals": "14.0.0",
+    "jiti": "2.6.1",
+    "obsidian": "^1.7.2",
+    "tslib": "2.4.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "8.35.1"
+  }
+}

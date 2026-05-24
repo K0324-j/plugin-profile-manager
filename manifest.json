@@ -1,0 +1,9 @@
+{
+	"id": "plugin-profile-manager",
+	"name": "Plugin Profile Manager",
+	"version": "1.0.0",
+	"minAppVersion": "1.7.2",
+	"description": "Edit community plugin enablement across multiple Obsidian config profiles.",
+	"author": "K0324-j",
+	"isDesktopOnly": true
+}

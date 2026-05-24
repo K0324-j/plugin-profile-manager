@@ -1,0 +1,464 @@
+.plugin-profile-manager-modal {
+  width: min(1120px, 94vw);
+}
+
+.plugin-profile-manager-modal .modal-content {
+  padding: 0;
+}
+
+.ppm-shell {
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-l);
+  color: var(--text-normal);
+  padding: 26px;
+}
+
+.ppm-header {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.ppm-header h2 {
+  color: var(--text-normal);
+  font-size: 22px;
+  font-weight: 720;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.ppm-header p {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 5px 0 0;
+}
+
+.ppm-action-bar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ppm-action-button {
+  align-items: center;
+  background: var(--interactive-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 5px;
+  color: var(--text-normal);
+  display: inline-flex;
+  font-size: 13px;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px;
+}
+
+.ppm-action-button:hover {
+  background: var(--interactive-hover);
+  border-color: var(--background-modifier-border-hover);
+}
+
+.ppm-action-button-primary {
+  background: var(--interactive-accent);
+  border-color: var(--interactive-accent);
+  box-shadow: none;
+}
+
+.ppm-action-button-primary:hover {
+  background: var(--interactive-accent-hover);
+}
+
+.ppm-action-icon svg {
+  height: 15px;
+  width: 15px;
+}
+
+.ppm-search {
+  align-items: center;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 5px;
+  color: var(--text-muted);
+  display: inline-flex;
+  height: 34px;
+  min-width: min(280px, 100%);
+  padding: 0 8px 0 10px;
+}
+
+.ppm-search:focus-within {
+  border-color: var(--interactive-accent);
+  color: var(--text-normal);
+}
+
+.ppm-search-icon svg {
+  height: 14px;
+  width: 14px;
+}
+
+.ppm-search-input {
+  background: transparent;
+  border: 0;
+  color: var(--text-normal);
+  flex: 1 1 auto;
+  font-size: 13px;
+  height: 30px;
+  min-width: 0;
+  outline: 0;
+  padding: 0 8px;
+}
+
+.ppm-search-input::placeholder {
+  color: var(--text-faint);
+}
+
+.ppm-search-clear {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text-muted);
+  display: inline-flex;
+  flex: 0 0 22px;
+  height: 22px;
+  justify-content: center;
+  padding: 0;
+  width: 22px;
+}
+
+.ppm-search-clear:hover:not(:disabled) {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.ppm-search-clear:disabled {
+  color: var(--text-faint);
+}
+
+.ppm-search-clear svg {
+  height: 13px;
+  width: 13px;
+}
+
+.ppm-status {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-inline-start: auto;
+}
+
+.ppm-warning {
+  background: var(--background-modifier-error);
+  border: 1px solid var(--text-error);
+  border-radius: 6px;
+  color: var(--text-on-accent);
+  margin-block: 10px 14px;
+  padding: 9px 12px;
+}
+
+.ppm-table-wrapper {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 5px;
+  height: clamp(260px, calc(100vh - 300px), 680px);
+  max-height: clamp(260px, calc(100vh - 300px), 680px);
+  overflow: auto;
+  position: relative;
+}
+
+.ppm-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 820px;
+  width: 100%;
+}
+
+.ppm-table th,
+.ppm-table td {
+  border-bottom: 1px solid var(--background-modifier-border);
+  border-right: 1px solid var(--background-modifier-border);
+  height: 54px;
+  padding: 7px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.ppm-table th:last-child,
+.ppm-table td:last-child {
+  border-right: 0;
+}
+
+.ppm-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.ppm-table th {
+  background: var(--background-secondary);
+  background-clip: padding-box;
+  color: var(--text-normal);
+  font-size: 13px;
+  font-weight: 680;
+  height: 46px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.ppm-table th::after {
+  background: var(--background-modifier-border);
+  bottom: -1px;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.ppm-table tbody tr {
+  background: var(--background-primary);
+}
+
+.ppm-table tbody tr:nth-child(even) {
+  background: var(--background-primary-alt);
+}
+
+.ppm-table tbody tr:hover {
+  background: var(--background-modifier-hover);
+}
+
+.ppm-empty-search {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 560;
+  text-align: center;
+}
+
+.ppm-profile-name {
+  text-align: center;
+}
+
+.ppm-profile-dir {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 520;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.ppm-plugin-cell {
+  min-width: 180px;
+}
+
+.ppm-plugin-name {
+  color: var(--text-normal);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.ppm-plugin-id {
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.25;
+  margin-top: 2px;
+}
+
+.ppm-cell-actions {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  justify-content: flex-start;
+  min-width: 98px;
+}
+
+.ppm-state {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text-muted);
+  display: inline-flex;
+  flex: 0 0 46px;
+  justify-content: center;
+  min-height: 24px;
+  min-width: 46px;
+  padding: 0;
+}
+
+.ppm-state:hover {
+  background: transparent;
+}
+
+.ppm-state:disabled {
+  opacity: 1;
+}
+
+.ppm-state-knob {
+  align-items: center;
+  background: var(--background-modifier-border);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 999px;
+  display: inline-flex;
+  height: 22px;
+  justify-content: flex-start;
+  padding: 2px;
+  transition: background 140ms ease, box-shadow 140ms ease;
+  width: 42px;
+}
+
+.ppm-state-knob::after {
+  background: var(--text-on-accent);
+  border-radius: 999px;
+  box-shadow: var(--shadow-s);
+  content: "";
+  height: 18px;
+  transition: transform 140ms ease;
+  width: 18px;
+}
+
+.ppm-state-on .ppm-state-knob {
+  background: var(--interactive-accent);
+  box-shadow: none;
+}
+
+.ppm-state-on .ppm-state-knob::after {
+  transform: translateX(18px);
+}
+
+.ppm-state-off .ppm-state-knob {
+  background: var(--background-modifier-border-hover);
+}
+
+.ppm-state-uninstalled .ppm-state-knob,
+.ppm-state-invalid-json .ppm-state-knob {
+  background: var(--background-secondary);
+  border-style: dashed;
+}
+
+.ppm-state-installable .ppm-state-knob {
+  background: var(--interactive-normal);
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  justify-content: center;
+}
+
+.ppm-state-installable .ppm-state-knob::after {
+  display: none;
+}
+
+.ppm-state-installable svg {
+  height: 14px;
+  width: 14px;
+}
+
+.ppm-state-locked .ppm-state-knob {
+  background: transparent;
+  border: 0;
+  color: var(--text-muted);
+  height: 22px;
+  justify-content: center;
+  padding: 0;
+  width: 22px;
+}
+
+.ppm-state-locked .ppm-state-knob::after {
+  display: none;
+}
+
+.ppm-state-locked svg {
+  height: 17px;
+  width: 17px;
+}
+
+.ppm-uninstall-button {
+  align-items: center;
+  background: var(--interactive-normal);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  display: inline-flex;
+  flex: 0 0 30px;
+  font-size: 11px;
+  height: 26px;
+  justify-content: center;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, background 120ms ease, border-color 120ms ease, color 120ms ease;
+  visibility: hidden;
+  width: 30px;
+}
+
+.ppm-table td:hover .ppm-uninstall-button,
+.ppm-cell-actions:focus-within .ppm-uninstall-button {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.ppm-uninstall-button:hover:not(:disabled) {
+  background: var(--background-modifier-error);
+  border-color: var(--text-error);
+  color: var(--text-on-accent);
+}
+
+.ppm-uninstall-button:disabled {
+  color: var(--text-faint);
+  opacity: 1;
+}
+
+.ppm-uninstall-icon svg {
+  height: 12px;
+  width: 12px;
+}
+
+.ppm-row-status {
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.ppm-row-status-installed {
+  color: var(--text-success);
+}
+
+.ppm-row-status-protected,
+.ppm-row-status-partial {
+  color: var(--text-muted);
+}
+
+.ppm-row-status-muted {
+  color: var(--text-faint);
+}
+
+.ppm-row-status-invalid {
+  color: var(--text-error);
+}
+
+.ppm-footnote {
+  align-items: center;
+  color: var(--text-faint);
+  display: flex;
+  font-size: 12px;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.ppm-footnote svg {
+  height: 16px;
+  width: 16px;
+}
+
+.plugin-profile-manager-confirm-modal .modal-content p {
+  color: var(--text-muted);
+  margin-block: 8px;
+}
+
+.ppm-confirm-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
