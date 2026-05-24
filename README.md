@@ -37,8 +37,8 @@ Automatic backup restore is planned for a future release.
 Before saving changes, the plugin creates backups under:
 
 ```text
-data/backups/community-plugins/
-data/backups/plugin-uninstall/
+.obsidian/plugins/plugin-profile-manager/backups/community-plugins/
+.obsidian/plugins/plugin-profile-manager/backups/plugin-uninstall/
 ```
 
 If a profile's `community-plugins.json` is invalid, saving is blocked for safety.

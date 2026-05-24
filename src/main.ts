@@ -57,8 +57,9 @@ const DEFAULT_SETTINGS: PluginProfileManagerSettings = {
   privacyMode: false
 };
 
-const BACKUP_ROOT = "data/backups/community-plugins";
-const UNINSTALL_BACKUP_ROOT = "data/backups/plugin-uninstall";
+const PLUGIN_ID = "plugin-profile-manager";
+const BACKUP_DIR = "backups/community-plugins";
+const UNINSTALL_BACKUP_DIR = "backups/plugin-uninstall";
 
 export default class PluginProfileManagerPlugin extends Plugin {
   settings: PluginProfileManagerSettings = DEFAULT_SETTINGS;
@@ -1149,7 +1150,7 @@ async function writeBackup(
   }
 
   const backupPath = normalizePath(
-    `${BACKUP_ROOT}/${timestamp}/${profileSnapshot.profile.configDir}/community-plugins.json`
+    `${getPluginDataRoot(app)}/${BACKUP_DIR}/${timestamp}/${profileSnapshot.profile.configDir}/community-plugins.json`
   );
   await ensureParentFolder(app, backupPath);
   await app.vault.adapter.write(backupPath, profileSnapshot.rawCommunity);
@@ -1215,7 +1216,7 @@ async function uninstallPluginFromProfile(
 
   const timestamp = createTimestamp();
   const backupPath = normalizePath(
-    `${UNINSTALL_BACKUP_ROOT}/${timestamp}/${profileSnapshot.profile.configDir}/${pluginId}`
+    `${getPluginDataRoot(app)}/${UNINSTALL_BACKUP_DIR}/${timestamp}/${profileSnapshot.profile.configDir}/${pluginId}`
   );
   await copyFolderRecursive(app, pluginPath, normalizePath(`${backupPath}/plugin`));
   await ensureParentFolder(app, normalizePath(`${backupPath}/community-plugins.json`));
@@ -1234,12 +1235,13 @@ async function uninstallPluginFromProfile(
 }
 
 async function cleanupOldUninstallBackups(app: App, retentionDays: number) {
-  if (retentionDays <= 0 || !(await app.vault.adapter.exists(UNINSTALL_BACKUP_ROOT))) {
+  const uninstallBackupRoot = normalizePath(`${getPluginDataRoot(app)}/${UNINSTALL_BACKUP_DIR}`);
+  if (retentionDays <= 0 || !(await app.vault.adapter.exists(uninstallBackupRoot))) {
     return;
   }
 
   const cutoff = Date.now() - retentionDays * 24 * 60 * 60 * 1000;
-  const listed = await app.vault.adapter.list(UNINSTALL_BACKUP_ROOT);
+  const listed = await app.vault.adapter.list(uninstallBackupRoot);
 
   for (const folderPath of listed.folders) {
     const folderName = folderPath.split("/").pop();
@@ -1252,6 +1254,10 @@ async function cleanupOldUninstallBackups(app: App, retentionDays: number) {
       await app.vault.adapter.rmdir(folderPath, true);
     }
   }
+}
+
+function getPluginDataRoot(app: App): string {
+  return normalizePath(`${app.vault.configDir}/plugins/${PLUGIN_ID}`);
 }
 
 async function copyFolderRecursive(app: App, sourcePath: string, targetPath: string) {
